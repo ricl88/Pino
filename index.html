@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Pino AS — Investorpresentasjon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── Variables ── */
+:root{--g:#2C5E4A;--bg:#F6F4EF;--bk:#1A1A1A;--bk2:#2D2D2D;--gr:#888;--grl:#C8C4BC;
+  --sz:1;--slide-px:20px 24px;--h2s:clamp(22px,6vw,32px);
+  --sub-s:12px;--sub-w:300px;--note-s:9px;--note-w:300px;
+  --label-s:8px;--label-ls:3.5px;
+  --hero-s:68px;--hero-dot:9px;--hero-sub:8px;--hero-body:14px;--hero-bw:280px;
+  --chaos-w:340px;--chaos-h:230px;
+  --cnode-dot:8px;--cnode-label:10px;--cnode-sub:8px;
+  --radial-w:260px;--radial-h:230px;--rad4-w:240px;--rad4-h:210px;--rad5-w:250px;--rad5-h:220px;
+  --circle-w:100px;--cbig-s:20px;--csm-s:8px;
+  --rn-w:68px;--rn-s:9px;--rn-strong:10px;
+  --svc-circ:64px;--svc-gap:10px;--svc-w:340px;--svc-label:11px;--svc-sub:9px;
+  --ms-w:80px;--ms-font:9px;--svc-line-gap:96px;
+  --pill-s:10px;--pill-px:4px 10px;--pill-w:320px;
+  --bar-w:340px;--bar-h:140px;--bar-gap:6px;--bar-lb:8px;--bar-val:7px;
+  --cg-w:340px;--cg-bar-h:32px;--cg-yr:7px;--cg-flag:12px;--cg-name:9px;--cg-val:6px;
+  --sr-gap:12px;--sb-n:22px;--sb-l:9px;--sr-w:320px;
+  --fdi-w:320px;--fdi-title:11px;--fdi-p:9px;--fdi-t:8px;
+  --legend-s:8px;--legend-b:8px;
+  --etbl-w:340px;--etbl-th:7px;--etbl-td:7.5px;--etbl-td1:9px;--etbl-pad:2px 2px;
+  --sf-s:7px;--sf-b:10px;--sf-lr:24px;
+  --close-s:48px;--close-body:13px;--close-bw:260px;--close-c:8px;
+  --farr-h:14px;--fi2-min:38px;
+  --nav-r:8px;--nav-gap:7px;--nd-w:4px;--nd-on-h:16px;
+}
+@media(min-width:768px){:root{
+  --sz:1.5;--slide-px:40px 60px;--h2s:clamp(34px,5vw,52px);
+  --sub-s:16px;--sub-w:560px;--note-s:12px;--note-w:560px;
+  --label-s:11px;--label-ls:5px;
+  --hero-s:130px;--hero-dot:15px;--hero-sub:11px;--hero-body:20px;--hero-bw:480px;
+  --chaos-w:500px;--chaos-h:340px;
+  --cnode-dot:11px;--cnode-label:13px;--cnode-sub:10px;
+  --radial-w:380px;--radial-h:340px;--rad4-w:360px;--rad4-h:300px;--rad5-w:370px;--rad5-h:320px;
+  --circle-w:140px;--cbig-s:26px;--csm-s:10px;
+  --rn-w:100px;--rn-s:11px;--rn-strong:13px;
+  --svc-circ:90px;--svc-gap:24px;--svc-w:560px;--svc-label:13px;--svc-sub:11px;
+  --ms-w:110px;--ms-font:13px;--svc-line-gap:160px;
+  --pill-s:13px;--pill-px:7px 16px;--pill-w:560px;
+  --bar-w:560px;--bar-h:200px;--bar-gap:12px;--bar-lb:11px;--bar-val:10px;
+  --cg-w:560px;--cg-bar-h:50px;--cg-yr:10px;--cg-flag:18px;--cg-name:12px;--cg-val:8px;
+  --sr-gap:28px;--sb-n:34px;--sb-l:12px;--sr-w:560px;
+  --fdi-w:560px;--fdi-title:15px;--fdi-p:12px;--fdi-t:11px;
+  --legend-s:11px;--legend-b:10px;
+  --etbl-w:560px;--etbl-th:10px;--etbl-td:11px;--etbl-td1:13px;--etbl-pad:5px 8px;
+  --sf-s:9px;--sf-b:18px;--sf-lr:40px;
+  --close-s:90px;--close-body:19px;--close-bw:420px;--close-c:11px;
+  --farr-h:18px;--fi2-min:44px;
+  --nav-r:20px;--nav-gap:10px;--nd-w:5px;--nd-on-h:20px;
+}}
+@media(min-width:1200px){:root{
+  --sz:2;--slide-px:60px 100px;--h2s:clamp(44px,4vw,60px);
+  --sub-s:20px;--sub-w:700px;--note-s:14px;--note-w:700px;
+  --label-s:13px;--label-ls:6px;
+  --hero-s:180px;--hero-dot:20px;--hero-sub:13px;--hero-body:24px;--hero-bw:560px;
+  --chaos-w:640px;--chaos-h:430px;
+  --cnode-dot:14px;--cnode-label:16px;--cnode-sub:12px;
+  --radial-w:480px;--radial-h:420px;--rad4-w:440px;--rad4-h:380px;--rad5-w:460px;--rad5-h:400px;
+  --circle-w:170px;--cbig-s:30px;--csm-s:12px;
+  --rn-w:120px;--rn-s:14px;--rn-strong:16px;
+  --svc-circ:110px;--svc-gap:40px;--svc-w:740px;--svc-label:15px;--svc-sub:13px;
+  --ms-w:130px;--ms-font:15px;--svc-line-gap:240px;
+  --pill-s:15px;--pill-px:10px 22px;--pill-w:700px;
+  --bar-w:700px;--bar-h:260px;--bar-gap:18px;--bar-lb:13px;--bar-val:12px;
+  --cg-w:700px;--cg-bar-h:70px;--cg-yr:12px;--cg-flag:22px;--cg-name:15px;--cg-val:10px;
+  --sr-gap:40px;--sb-n:46px;--sb-l:14px;--sr-w:700px;
+  --fdi-w:700px;--fdi-title:19px;--fdi-p:15px;--fdi-t:13px;
+  --legend-s:13px;--legend-b:12px;
+  --etbl-w:700px;--etbl-th:12px;--etbl-td:14px;--etbl-td1:16px;--etbl-pad:6px 12px;
+  --sf-s:10px;--sf-b:26px;--sf-lr:60px;
+  --close-s:140px;--close-body:24px;--close-bw:520px;--close-c:13px;
+  --farr-h:24px;--fi2-min:52px;
+  --nav-r:30px;--nav-gap:12px;--nd-w:6px;--nd-on-h:26px;
+}}
+
+/* ── Reset & base ── */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+html{scroll-snap-type:y mandatory;overflow-y:scroll;scroll-behavior:smooth;background:var(--bg)}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--bk);overflow-x:hidden}
+
+/* ── Slides ── */
+.S{height:100dvh;max-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:var(--slide-px);position:relative;overflow:hidden;background:var(--bg)}
+
+/* ── Nav dots ── */
+.nav{position:fixed;right:var(--nav-r);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:var(--nav-gap);z-index:100}
+.nd{width:var(--nd-w);height:var(--nd-w);border-radius:50%;background:var(--grl);transition:all .4s cubic-bezier(.22,1,.36,1);cursor:pointer;border:none;padding:0}
+.nd.on{background:var(--bk);height:var(--nd-on-h);border-radius:2px}
+
+/* ── Typography ── */
+.label{font-family:'JetBrains Mono',monospace;font-size:var(--label-s);font-weight:500;text-transform:uppercase;letter-spacing:var(--label-ls);color:var(--gr)}
+h2{font-family:'Playfair Display',serif;font-size:var(--h2s);font-weight:400;line-height:1.15;color:var(--bk);text-align:center}
+h2 em{font-style:italic;font-weight:500}
+.sub{font-size:var(--sub-s);line-height:1.6;color:var(--bk2);font-weight:300;text-align:center;max-width:var(--sub-w)}
+.note{font-size:var(--note-s);color:var(--grl);text-align:center;line-height:1.4;max-width:var(--note-w);font-weight:300}
+
+/* ── Animations ── */
+.a{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.a.v{opacity:1;transform:translateY(0)}
+.a:nth-child(2){transition-delay:.06s}.a:nth-child(3){transition-delay:.12s}.a:nth-child(4){transition-delay:.18s}.a:nth-child(5){transition-delay:.24s}.a:nth-child(6){transition-delay:.3s}.a:nth-child(7){transition-delay:.36s}.a:nth-child(8){transition-delay:.42s}.a:nth-child(9){transition-delay:.48s}
+
+/* ── Hero ── */
+.hwm{font-family:'Playfair Display',serif;font-size:var(--hero-s);font-weight:400;color:var(--bk);letter-spacing:-2px;line-height:1;opacity:0;animation:hf 1s cubic-bezier(.22,1,.36,1) .2s forwards}
+.hdot{display:inline-block;width:var(--hero-dot);height:var(--hero-dot);background:var(--g);border-radius:50%;vertical-align:super;margin-left:1px;opacity:0;animation:dp .4s cubic-bezier(.34,1.56,.64,1) .9s forwards}
+.hsub{font-family:'JetBrains Mono',monospace;font-size:var(--hero-sub);text-transform:uppercase;letter-spacing:5px;color:var(--gr);margin:8px 0 36px;opacity:0;animation:hf .8s ease .5s forwards}
+.hbody{font-size:var(--hero-body);line-height:1.8;color:var(--bk2);font-weight:300;max-width:var(--hero-bw);text-align:center;opacity:0;animation:hf .8s ease .8s forwards}
+.hscroll{position:absolute;bottom:32px;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:hf .8s ease 1.2s forwards}
+.hscroll span{font-family:'JetBrains Mono',monospace;font-size:7px;text-transform:uppercase;letter-spacing:4px;color:var(--grl)}
+.sline{width:1px;height:0;background:var(--bk);animation:lg 1s ease 1.6s forwards,lp 2.5s ease-in-out 2.6s infinite}
+.hyr{position:absolute;bottom:14px;right:24px;font-family:'JetBrains Mono',monospace;font-size:var(--hero-sub);color:var(--grl);letter-spacing:1px;opacity:0;animation:hf .8s ease 1.4s forwards}
+@keyframes hf{to{opacity:1}}@keyframes dp{to{opacity:1}}@keyframes lg{to{height:24px}}@keyframes lp{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ── Chaos diagram ── */
+.chaos{position:relative;width:100%;max-width:var(--chaos-w);height:var(--chaos-h);flex-shrink:0}
+.cnode{position:absolute;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transition:all .5s cubic-bezier(.22,1,.36,1)}
+.cnode.v{opacity:1;transform:translate(0,0)!important}
+.cnode-dot{width:var(--cnode-dot);height:var(--cnode-dot);border-radius:50%;border:1.5px solid var(--bk);margin-bottom:3px;background:var(--bg)}
+.cnode-label{font-size:var(--cnode-label);font-weight:500;color:var(--bk);line-height:1.2}
+.cnode-sub{font-size:var(--cnode-sub);color:var(--gr);font-weight:300;margin-top:1px}
+.chaos svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.chaos svg line{stroke:var(--bk);stroke-width:.6;opacity:.08;stroke-dasharray:4 4;stroke-dashoffset:80;transition:stroke-dashoffset 2s ease}
+.chaos svg line.drawn{stroke-dashoffset:0}
+
+/* ── Radial diagram ── */
+.radial{position:relative;flex-shrink:0;width:var(--radial-w);height:var(--radial-h)}
+.rad4{width:var(--rad4-w);height:var(--rad4-h)}
+.rad5{width:var(--rad5-w);height:var(--rad5-h)}
+.circle{width:var(--circle-w);height:var(--circle-w);border-radius:50%;border:1.5px solid var(--bk);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;background:var(--bg)}
+.cbig{font-family:'Playfair Display',serif;font-size:var(--cbig-s);font-weight:400;color:var(--bk);line-height:1.1}
+.csm{font-size:var(--csm-s);color:var(--gr);font-weight:400;margin-top:2px}
+.rn{position:absolute;display:flex;flex-direction:column;align-items:center;text-align:center;width:var(--rn-w);opacity:0;transition:all .6s cubic-bezier(.22,1,.36,1)}
+.rn.v{opacity:1}
+.rn-l{font-size:var(--rn-s);color:var(--bk2);font-weight:400;line-height:1.3}
+.rn-l strong{font-weight:500;font-size:var(--rn-strong);color:var(--bk);display:block}
+.radial svg.rl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.radial svg.rl line{stroke:var(--bk);stroke-width:.8;opacity:.1;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1s cubic-bezier(.22,1,.36,1)}
+.radial svg.rl line.drawn{stroke-dashoffset:0}
+
+/* ── Services ── */
+.svc{display:flex;gap:var(--svc-gap);align-items:flex-start;max-width:var(--svc-w);width:100%}
+.svc-col{flex:1;display:flex;flex-direction:column;align-items:center}
+.svc-circ{width:var(--svc-circ);height:var(--svc-circ);border-radius:50%;border:1.5px solid var(--g);display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.svc-circ span{font-family:'Playfair Display',serif;font-size:calc(var(--svc-label) * .85);color:var(--bk);text-align:center;line-height:1.2}
+.svc-flow{margin-top:6px;display:flex;flex-direction:column;align-items:center;gap:0;width:100%}
+.svc-lines{display:flex;justify-content:center;gap:var(--svc-line-gap);margin-top:2px}
+.ms-circle{width:var(--ms-w);height:var(--ms-w);border-radius:50%;border:1.5px solid var(--g);display:flex;align-items:center;justify-content:center;background:var(--bg);text-align:center}
+.ms-circle span{font-family:'Playfair Display',serif;font-size:var(--ms-font);color:var(--bk);line-height:1.2}
+
+/* ── Flow items ── */
+.fi2{text-align:center;padding:5px 0;min-height:var(--fi2-min);opacity:0;transform:translateY(8px);transition:all .4s cubic-bezier(.22,1,.36,1)}
+.fi2.v{opacity:1;transform:translateY(0)}
+.fi2 strong{font-size:var(--svc-label);font-weight:500;color:var(--bk)}
+.fi2 span{font-size:var(--svc-sub);color:var(--gr);font-weight:300}
+.farr{width:1px;height:var(--farr-h);background:var(--bk);opacity:.15;transform:scaleY(0);transition:transform .3s ease;transform-origin:top}
+.farr.v{transform:scaleY(1)}
+
+/* ── Pills ── */
+.pills{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;max-width:var(--pill-w)}
+.pill{padding:var(--pill-px);border-radius:16px;font-size:var(--pill-s);font-weight:400;border:1px solid rgba(26,26,26,.12);color:var(--bk2);opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
+
+/* ── Bar chart ── */
+.vchart{display:flex;align-items:flex-end;justify-content:center;gap:var(--bar-gap);width:100%;max-width:var(--bar-w);height:var(--bar-h)}
+.vcol{display:flex;flex-direction:column;align-items:center;flex:1;justify-content:flex-end}
+.vcol-bars{width:100%;position:relative}
+.vbar{border-radius:3px 3px 0 0;height:0;transition:height 1s cubic-bezier(.22,1,.36,1);position:absolute;bottom:0;left:0;right:0}
+.vbar--rev{background:var(--g)}
+.vbar--exp{background:#B8CBBF}
+.vcol-lb{font-family:'JetBrains Mono',monospace;font-size:var(--bar-lb);color:var(--gr);margin-top:4px}
+.vcol-val{font-family:'JetBrains Mono',monospace;font-size:var(--bar-val);color:var(--bk2);margin-bottom:3px;text-align:center;line-height:1.2}
+
+/* ── Country growth ── */
+.cg-wrap{width:100%;max-width:var(--cg-w)}
+.cg-header{display:flex;gap:3px;padding:0 0 4px 52px}
+.cg-yr{flex:1;text-align:center;font-family:'JetBrains Mono',monospace;font-size:var(--cg-yr);color:var(--gr);font-weight:400}
+.cg-row{display:flex;align-items:center;gap:5px;padding:4px 0;border-bottom:1px solid rgba(26,26,26,.03)}
+.cg-row:last-child{border-bottom:none}
+.cg-flag{font-size:var(--cg-flag);min-width:16px}
+.cg-name{font-size:var(--cg-name);min-width:34px;color:var(--bk);font-weight:400}
+.cg-bars{flex:1;display:flex;gap:3px;align-items:flex-end;height:var(--cg-bar-h)}
+.cg-bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.cg-fill{width:100%;border-radius:2px 2px 0 0;height:0;transition:height 1s cubic-bezier(.22,1,.36,1)}
+.cg-fill--28{background:var(--g);opacity:.3}
+.cg-fill--29{background:var(--g);opacity:.5}
+.cg-fill--30{background:var(--g);opacity:.7}
+.cg-fill--31{background:var(--g);opacity:1}
+.cg-val{font-family:'JetBrains Mono',monospace;font-size:var(--cg-val);color:var(--bk2);margin-bottom:1px;white-space:nowrap}
+
+/* ── Funding items ── */
+.fdi-wrap{width:100%;max-width:var(--fdi-w)}
+.fdi{padding:7px 0;border-bottom:1px solid rgba(26,26,26,.05);text-align:left;width:100%;max-width:var(--fdi-w)}
+.fdi:last-child{border-bottom:none}
+.fdi strong{font-size:var(--fdi-title);font-weight:500;color:var(--bk)}
+.fdi p{font-size:var(--fdi-p);color:var(--gr);font-weight:300;line-height:1.4;margin-top:1px}
+.fdi-t{font-family:'JetBrains Mono',monospace;font-size:var(--fdi-t);color:var(--g);font-weight:500;margin-top:2px;display:inline-block}
+
+/* ── Stats row ── */
+.sr{display:flex;gap:var(--sr-gap);text-align:center;max-width:var(--sr-w)}
+.sb{flex:1}
+.sb-n{font-family:'Playfair Display',serif;font-size:var(--sb-n);font-weight:400;color:var(--bk);line-height:1.1}
+.sb-l{font-size:var(--sb-l);color:var(--gr);font-weight:300;margin-top:2px;line-height:1.3}
+
+/* ── Legend ── */
+.legend{display:flex;gap:12px;justify-content:center}
+.legend-i{display:flex;align-items:center;gap:4px;font-size:var(--legend-s);color:var(--gr)}
+.legend-b{width:var(--legend-b);height:var(--legend-b);border-radius:2px}
+.legend-b--r{background:var(--g)}
+.legend-b--e{background:#B8CBBF}
+
+/* ── Economy table ── */
+.etbl{width:100%;max-width:var(--etbl-w);border-collapse:collapse}
+.etbl th{font-family:'JetBrains Mono',monospace;font-size:var(--etbl-th);color:var(--gr);font-weight:400;text-align:center;padding:var(--etbl-pad);letter-spacing:.5px}
+.etbl th:first-child{text-align:left}
+.etbl td{font-family:'JetBrains Mono',monospace;font-size:var(--etbl-td);color:var(--bk2);text-align:center;padding:var(--etbl-pad);border-top:1px solid rgba(26,26,26,.04)}
+.etbl td:first-child{text-align:left;font-family:'Outfit',sans-serif;font-size:var(--etbl-td1);color:var(--bk);font-weight:400}
+.etbl tr:nth-last-child(3) td{border-top:1px solid rgba(26,26,26,.12);font-weight:500;color:var(--bk)}
+.etbl tr:nth-last-child(2) td{border-top:1px solid rgba(26,26,26,.06)}
+.etbl tr:last-child td{border-top:1.5px solid rgba(26,26,26,.15);font-weight:600;color:var(--bk)}
+
+/* ── Slide footer ── */
+.sf{position:absolute;bottom:var(--sf-b);left:var(--sf-lr);right:var(--sf-lr);display:flex;justify-content:space-between}
+.sf span{font-family:'JetBrains Mono',monospace;font-size:var(--sf-s);color:var(--grl);letter-spacing:1px}
+
+/* ── Closing ── */
+.clm{font-family:'Playfair Display',serif;font-size:var(--close-s);font-weight:400;color:var(--bk);letter-spacing:-2px}
+.clb{font-size:var(--close-body);line-height:1.8;color:var(--gr);font-weight:300;max-width:var(--close-bw);text-align:center;margin:16px 0 28px}
+.clc{font-family:'JetBrains Mono',monospace;font-size:var(--close-c);color:var(--grl);letter-spacing:1px;line-height:2;text-align:center}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav"></nav>
+
+<!-- 1. HERO -->
+<section class="S" data-s>
+  <div class="hwm">Pino<span class="hdot"></span></div>
+  <div class="hsub">Helseintelligens for alle</div>
+  <p class="hbody">Norges første AI-plattform som samler all din helseinformasjon og gir deg innsikt du kan handle på.</p>
+  <div class="hscroll"><span>Bla ned</span><div class="sline"></div></div>
+  <div class="hyr">Investorpresentasjon · 2027</div>
+</section>
+
+<!-- 2. PROBLEM -->
+<section class="S" data-s>
+  <div class="label a">Problemet</div>
+  <h2 class="a" style="margin:6px 0 4px">Din helse er <em>fragmentert</em></h2>
+  <p class="sub a" style="margin-bottom:10px">Dataene dine er spredt over ulike systemer som aldri snakker sammen.</p>
+  <div class="chaos a" data-chaos>
+    <svg viewBox="0 0 340 230">
+      <line x1="60" y1="40" x2="200" y2="26" data-ln/><line x1="200" y1="26" x2="290" y2="70" data-ln/>
+      <line x1="290" y1="70" x2="255" y2="170" data-ln/><line x1="60" y1="40" x2="28" y2="136" data-ln/>
+      <line x1="28" y1="136" x2="120" y2="195" data-ln/><line x1="120" y1="195" x2="255" y2="170" data-ln/>
+      <line x1="200" y1="26" x2="120" y2="195" data-ln/><line x1="60" y1="40" x2="255" y2="170" data-ln/>
+      <line x1="150" y1="108" x2="60" y2="40" data-ln/><line x1="150" y1="108" x2="290" y2="70" data-ln/>
+      <line x1="150" y1="108" x2="28" y2="136" data-ln/>
+    </svg>
+    <div class="cnode" style="left:11%;top:7%;transform:translate(-10px,-8px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Fastlege</div><div class="cnode-sub">Blodprøver</div></div>
+    <div class="cnode" style="left:52%;top:1%;transform:translate(8px,-10px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Smartklokke</div><div class="cnode-sub">Puls & søvn</div></div>
+    <div class="cnode" style="right:5%;top:20%;transform:translate(10px,-6px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Treningsapp</div><div class="cnode-sub">Strava etc.</div></div>
+    <div class="cnode" style="left:2%;top:49%;transform:translate(-12px,6px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Kosthold</div><div class="cnode-sub">Egen app</div></div>
+    <div class="cnode" style="left:29%;top:75%;transform:translate(-6px,10px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Genetikk</div><div class="cnode-sub">Annen tjeneste</div></div>
+    <div class="cnode" style="right:14%;top:64%;transform:translate(10px,8px)" data-cn><div class="cnode-dot"></div><div class="cnode-label">Mental helse</div><div class="cnode-sub">Dagbok-app</div></div>
+    <div class="cnode" style="left:38%;top:37%;transform:translate(0,6px)" data-cn><div class="cnode-dot" style="border-color:var(--gr);border-style:dashed"></div><div class="cnode-label" style="color:var(--gr)">???</div><div class="cnode-sub">Ingen helhet</div></div>
+  </div>
+  <p class="note a" style="margin-top:18px">Ingen plattform kobler alt sammen og gir deg et helhetlig bilde.</p>
+  <div class="sf"><span>Pino AS</span><span>02</span></div>
+</section>
+
+<!-- 3. LØSNING -->
+<section class="S" data-s>
+  <div class="label a">Løsningen</div>
+  <h2 class="a" style="margin:6px 0 4px">Pino samler <em>hele bildet</em></h2>
+  <div style="height:6px"></div>
+  <div class="radial a" data-radial>
+    <svg class="rl" viewBox="0 0 260 230">
+      <line x1="130" y1="115" x2="30" y2="24" data-ln/><line x1="130" y1="115" x2="230" y2="24" data-ln/>
+      <line x1="130" y1="115" x2="4" y2="115" data-ln/><line x1="130" y1="115" x2="256" y2="115" data-ln/>
+      <line x1="130" y1="115" x2="40" y2="210" data-ln/><line x1="130" y1="115" x2="220" y2="210" data-ln/>
+    </svg>
+    <div class="circle" style="border-color:var(--g);background:var(--g)">
+      <div class="cbig" style="color:var(--bg)">Pino</div>
+      <div class="csm" style="color:rgba(246,244,239,.5)">Alt samlet</div>
+    </div>
+    <div class="rn" style="top:0;left:-2%" data-rn><div class="rn-l"><strong>Blodprøver</strong></div></div>
+    <div class="rn" style="top:0;right:-2%" data-rn><div class="rn-l"><strong>Gendata</strong></div></div>
+    <div class="rn" style="top:42%;left:-7%" data-rn><div class="rn-l"><strong>Klokke</strong>Søvn · HRV</div></div>
+    <div class="rn" style="top:42%;right:-7%" data-rn><div class="rn-l"><strong>Trening</strong>All aktivitet</div></div>
+    <div class="rn" style="bottom:0;left:2%" data-rn><div class="rn-l"><strong>Kosthold</strong></div></div>
+    <div class="rn" style="bottom:0;right:2%" data-rn><div class="rn-l"><strong>Mental helse</strong></div></div>
+  </div>
+  <div class="pills a" style="margin-top:16px">
+    <span class="pill">Medisiner</span><span class="pill">Allergier</span><span class="pill">Blodtrykk</span><span class="pill">Vaksinasjoner</span><span class="pill">Familiehistorikk</span><span class="pill">Vekt</span><span class="pill">Menstruasjon</span><span class="pill">Stressnivå</span>
+  </div>
+  <p class="note a" style="margin-top:18px">Pino gir helseberegninger — aldri diagnoser. Henviser alltid til lege.</p>
+  <div class="sf"><span>Pino AS</span><span>03</span></div>
+</section>
+
+<!-- 4. TJENESTER -->
+<section class="S" data-s>
+  <div class="label a">Hva Pino leverer</div>
+  <h2 class="a" style="margin:4px 0 6px">Kosthold, trening & <em>helseveiledning</em></h2>
+  <div class="svc a">
+    <div class="svc-col">
+      <div class="svc-circ"><span>Kosthold</span></div>
+      <div class="svc-flow" data-flow>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Enkel</strong><br><span>Justeringer</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Medium</strong><br><span>Ukemeny</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Full plan</strong><br><span>Komplett +<br>handleliste</span></div>
+      </div>
+    </div>
+    <div class="svc-col">
+      <div class="svc-circ"><span style="font-size:calc(var(--svc-label)*.7)">Helse-<br>veileder</span></div>
+      <div class="svc-flow" data-flow>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Felleskatalogen</strong><br><span>Opplært medisininfo</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Symptomer</strong><br><span>Navigering +<br>henvisning</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Medisinforståelse</strong><br><span>Bivirkninger &<br>interaksjoner</span></div>
+      </div>
+    </div>
+    <div class="svc-col">
+      <div class="svc-circ"><span>Trening</span></div>
+      <div class="svc-flow" data-flow>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Enkel</strong><br><span>15 min gåtur</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Medium</strong><br><span>3–4 økter/uke</span></div>
+        <div class="farr"></div>
+        <div class="fi2"><strong>Periodisert</strong><br><span>Full plan +<br>progresjon</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="svc-lines a">
+    <div class="farr"></div>
+    <div class="farr"></div>
+    <div class="farr"></div>
+  </div>
+  <div class="ms-circle a"><span>Mental<br>sparring</span></div>
+  <p class="note a" style="margin-top:4px">Din samtalepartner for helse og velvære — alltid tilgjengelig.</p>
+  <div class="sf"><span>Pino AS</span><span>04</span></div>
+</section>
+
+<!-- 5. TEKNOLOGI -->
+<section class="S" data-s>
+  <div class="label a">Teknologi</div>
+  <h2 class="a" style="margin:6px 0 4px">Lokal AI. <em>Norsk kontroll.</em></h2>
+  <div style="height:6px"></div>
+  <div class="radial a" data-radial>
+    <svg class="rl" viewBox="0 0 260 230">
+      <line x1="130" y1="115" x2="28" y2="26" data-ln/><line x1="130" y1="115" x2="232" y2="26" data-ln/>
+      <line x1="130" y1="115" x2="6" y2="115" data-ln/><line x1="130" y1="115" x2="254" y2="115" data-ln/>
+      <line x1="130" y1="115" x2="44" y2="212" data-ln/><line x1="130" y1="115" x2="216" y2="212" data-ln/>
+    </svg>
+    <div class="circle" style="border-color:var(--g);background:var(--g)">
+      <div class="cbig" style="color:var(--bg);font-size:calc(var(--cbig-s)*.7)">Lokal AI</div>
+      <div class="csm" style="color:rgba(246,244,239,.5)">LLM · Llama</div>
+    </div>
+    <div class="rn" style="top:0;left:-2%" data-rn><div class="rn-l"><strong>Eidsiva Digital</strong>Gjøvik · offentlig eid</div></div>
+    <div class="rn" style="top:0;right:-2%" data-rn><div class="rn-l"><strong>Skygard</strong>Telenor/Hafslund</div></div>
+    <div class="rn" style="top:42%;left:-7%" data-rn><div class="rn-l"><strong>GDPR</strong>Norsk lov</div></div>
+    <div class="rn" style="top:42%;right:-7%" data-rn><div class="rn-l"><strong>Fornybar</strong>100% grønn</div></div>
+    <div class="rn" style="bottom:0;left:2%" data-rn><div class="rn-l"><strong>Nasjonal</strong>Data i Norge</div></div>
+    <div class="rn" style="bottom:0;right:2%" data-rn><div class="rn-l"><strong>Privat</strong>Ingen tredjeparter</div></div>
+  </div>
+  <p class="note a" style="margin-top:20px">All helsedata lagres og prosesseres lokalt. Norges sikreste datasentre.</p>
+  <div class="sf"><span>Pino AS</span><span>05</span></div>
+</section>
+
+<!-- 6. FORRETNINGSMODELL -->
+<section class="S" data-s>
+  <div class="label a">Forretningsmodell</div>
+  <div style="height:8px"></div>
+  <div class="radial rad4 a" data-radial>
+    <svg class="rl" viewBox="0 0 240 210">
+      <line x1="120" y1="105" x2="24" y2="36" data-ln/><line x1="120" y1="105" x2="216" y2="36" data-ln/>
+      <line x1="120" y1="105" x2="24" y2="178" data-ln/><line x1="120" y1="105" x2="216" y2="178" data-ln/>
+    </svg>
+    <div class="circle">
+      <div class="cbig" style="font-size:calc(var(--cbig-s)*1.1)">79,-</div>
+      <div class="csm">kr/mnd per bruker</div>
+    </div>
+    <div class="rn" style="top:2%;left:-4%" data-rn><div class="rn-l"><strong>App Store</strong>iOS + Android</div></div>
+    <div class="rn" style="top:2%;right:-4%" data-rn><div class="rn-l"><strong>Vipps</strong>Direkte betaling</div></div>
+    <div class="rn" style="bottom:2%;left:-4%" data-rn><div class="rn-l"><strong>Freemium</strong>Gratis basisplan</div></div>
+    <div class="rn" style="bottom:2%;right:-4%" data-rn><div class="rn-l"><strong>B2B</strong>Bedriftsavtaler</div></div>
+  </div>
+  <p class="note a" style="margin-top:20px">Én enkel prisplan. Ingen skjulte kostnader. Skalerbar SaaS-modell.</p>
+  <div class="sf"><span>Pino AS</span><span>06</span></div>
+</section>
+
+<!-- 7. VEKST -->
+<section class="S" data-s>
+  <div class="label a">Markedsvekst</div>
+  <h2 class="a" style="margin:4px 0 2px">Vekst <em>år for år</em></h2>
+  <div style="height:6px"></div>
+  <div class="cg-wrap a" data-cgbars>
+    <div class="cg-header"><div class="cg-yr">2028</div><div class="cg-yr">2029</div><div class="cg-yr">2030</div><div class="cg-yr">2031</div></div>
+    <div class="cg-row"><span class="cg-flag">🇳🇴</span><span class="cg-name">Norge</span><div class="cg-bars"><div class="cg-bar"><div class="cg-val">8k</div><div class="cg-fill cg-fill--28" data-gh="20%"></div></div><div class="cg-bar"><div class="cg-val">50k</div><div class="cg-fill cg-fill--29" data-gh="50%"></div></div><div class="cg-bar"><div class="cg-val">128k</div><div class="cg-fill cg-fill--30" data-gh="75%"></div></div><div class="cg-bar"><div class="cg-val">300k</div><div class="cg-fill cg-fill--31" data-gh="100%"></div></div></div></div>
+    <div class="cg-row"><span class="cg-flag">🇸🇪</span><span class="cg-name">Sverige</span><div class="cg-bars"><div class="cg-bar"><div class="cg-val">2k</div><div class="cg-fill cg-fill--28" data-gh="6%"></div></div><div class="cg-bar"><div class="cg-val">35k</div><div class="cg-fill cg-fill--29" data-gh="35%"></div></div><div class="cg-bar"><div class="cg-val">102k</div><div class="cg-fill cg-fill--30" data-gh="60%"></div></div><div class="cg-bar"><div class="cg-val">250k</div><div class="cg-fill cg-fill--31" data-gh="83%"></div></div></div></div>
+    <div class="cg-row"><span class="cg-flag">🇩🇰</span><span class="cg-name">Danmark</span><div class="cg-bars"><div class="cg-bar"><div class="cg-val">—</div><div class="cg-fill cg-fill--28" data-gh="0%"></div></div><div class="cg-bar"><div class="cg-val">25k</div><div class="cg-fill cg-fill--29" data-gh="25%"></div></div><div class="cg-bar"><div class="cg-val">77k</div><div class="cg-fill cg-fill--30" data-gh="45%"></div></div><div class="cg-bar"><div class="cg-val">200k</div><div class="cg-fill cg-fill--31" data-gh="67%"></div></div></div></div>
+    <div class="cg-row"><span class="cg-flag">🇫🇮</span><span class="cg-name">Finland</span><div class="cg-bars"><div class="cg-bar"><div class="cg-val">—</div><div class="cg-fill cg-fill--28" data-gh="0%"></div></div><div class="cg-bar"><div class="cg-val">25k</div><div class="cg-fill cg-fill--29" data-gh="25%"></div></div><div class="cg-bar"><div class="cg-val">77k</div><div class="cg-fill cg-fill--30" data-gh="45%"></div></div><div class="cg-bar"><div class="cg-val">150k</div><div class="cg-fill cg-fill--31" data-gh="50%"></div></div></div></div>
+    <div class="cg-row"><span class="cg-flag">🇪🇺</span><span class="cg-name">EU</span><div class="cg-bars"><div class="cg-bar"><div class="cg-val">—</div><div class="cg-fill cg-fill--28" data-gh="0%"></div></div><div class="cg-bar"><div class="cg-val">40k</div><div class="cg-fill cg-fill--29" data-gh="14%"></div></div><div class="cg-bar"><div class="cg-val">68k</div><div class="cg-fill cg-fill--30" data-gh="23%"></div></div><div class="cg-bar"><div class="cg-val">100k</div><div class="cg-fill cg-fill--31" data-gh="33%"></div></div></div></div>
+  </div>
+  <div class="sr a" style="margin-top:14px">
+    <div class="sb"><div class="sb-n">10k</div><div class="sb-l">2028<br>abonnenter</div></div>
+    <div class="sb"><div class="sb-n">175k</div><div class="sb-l">2029<br>Norden</div></div>
+    <div class="sb"><div class="sb-n">452k</div><div class="sb-l">2030<br>+ EU</div></div>
+    <div class="sb"><div class="sb-n">1M</div><div class="sb-l">2031<br>mål</div></div>
+  </div>
+  <p class="note a" style="margin-top:8px">Nordisk lansering 2028–29. EU-ekspansjon fra 2030. 15% konservativ justering.</p>
+  <div class="sf"><span>Pino AS</span><span>07</span></div>
+</section>
+
+<!-- 8. ØKONOMI -->
+<section class="S" data-s>
+  <div class="label a">Økonomi</div>
+  <h2 class="a" style="margin:4px 0 2px">Omsetning & <em>investering</em></h2>
+  <div class="legend a" style="margin:4px 0 4px"><div class="legend-i"><div class="legend-b legend-b--r"></div>Inntekt (ARR)</div><div class="legend-i"><div class="legend-b legend-b--e"></div>Utgifter</div></div>
+
+  <div class="vchart a" data-vbars>
+    <!-- 2027: exp(7)>rev(0) → exp behind, rev front -->
+    <div class="vcol">
+      <div class="vcol-val">0<br><span style="color:var(--gr)">7M</span></div>
+      <div class="vcol-bars" data-bh="4"><div class="vbar vbar--exp" style="z-index:1" data-vh="4"></div><div class="vbar vbar--rev" style="z-index:2" data-vh="1"></div></div>
+      <div class="vcol-lb">2027</div>
+    </div>
+    <!-- 2028: exp(24)>rev(7.6) → exp behind, rev front -->
+    <div class="vcol">
+      <div class="vcol-val">7,6M<br><span style="color:var(--gr)">24M</span></div>
+      <div class="vcol-bars" data-bh="7"><div class="vbar vbar--exp" style="z-index:1" data-vh="7"></div><div class="vbar vbar--rev" style="z-index:2" data-vh="3"></div></div>
+      <div class="vcol-lb">2028</div>
+    </div>
+    <!-- 2029: rev(166)>exp(145) → rev behind, exp front -->
+    <div class="vcol">
+      <div class="vcol-val">166M<br><span style="color:var(--gr)">145M</span></div>
+      <div class="vcol-bars" data-bh="30"><div class="vbar vbar--rev" style="z-index:1" data-vh="30"></div><div class="vbar vbar--exp" style="z-index:2" data-vh="27"></div></div>
+      <div class="vcol-lb">2029</div>
+    </div>
+    <!-- 2030: rev(342)>exp(240) → rev behind, exp front -->
+    <div class="vcol">
+      <div class="vcol-val">342M<br><span style="color:var(--gr)">240M</span></div>
+      <div class="vcol-bars" data-bh="63"><div class="vbar vbar--rev" style="z-index:1" data-vh="63"></div><div class="vbar vbar--exp" style="z-index:2" data-vh="44"></div></div>
+      <div class="vcol-lb">2030</div>
+    </div>
+    <!-- 2031: rev(756)>exp(480) → rev behind, exp front -->
+    <div class="vcol">
+      <div class="vcol-val">756M<br><span style="color:var(--gr)">480M</span></div>
+      <div class="vcol-bars" data-bh="126"><div class="vbar vbar--rev" style="z-index:1" data-vh="126"></div><div class="vbar vbar--exp" style="z-index:2" data-vh="84"></div></div>
+      <div class="vcol-lb">2031</div>
+    </div>
+  </div>
+
+  <div style="height:6px"></div>
+  <table class="etbl a">
+    <tr><th></th><th>2027</th><th>2028</th><th>2029</th><th>2030</th><th>2031</th></tr>
+    <tr><td>Lønn</td><td>3</td><td>10</td><td>25</td><td>40</td><td>80</td></tr>
+    <tr><td>Hardware</td><td>3</td><td>7</td><td>40</td><td>80</td><td>170</td></tr>
+    <tr><td>Infrastruktur</td><td>1</td><td>2</td><td>30</td><td>40</td><td>80</td></tr>
+    <tr><td>Markedsføring</td><td>—</td><td>5</td><td>50</td><td>80</td><td>150</td></tr>
+    <tr><td><strong>Sum utgifter</strong></td><td><strong>7</strong></td><td><strong>24</strong></td><td><strong>145</strong></td><td><strong>240</strong></td><td><strong>480</strong></td></tr>
+    <tr><td style="color:var(--g)">Inntekt (ARR)</td><td style="color:var(--g)">0</td><td style="color:var(--g)">7,6</td><td style="color:var(--g)">166</td><td style="color:var(--g)">342</td><td style="color:var(--g)">756</td></tr>
+    <tr><td><strong>Resultat</strong></td><td><strong style="color:#c0392b">−7</strong></td><td><strong style="color:#c0392b">−16,4</strong></td><td><strong style="color:var(--g)">+21</strong></td><td><strong style="color:var(--g)">+102</strong></td><td><strong style="color:var(--g)">+276</strong></td></tr>
+  </table>
+
+  <p class="note a" style="margin-top:8px">MNOK. Ansatte: 3→10→25→40→80. Lønnsomt fra 2029.</p>
+  <div class="sf"><span>Pino AS</span><span>08</span></div>
+</section>
+
+<!-- 9. STØTTEORDNINGER -->
+<section class="S" data-s>
+  <div class="label a">Offentlig støtte</div>
+  <h2 class="a" style="margin:4px 0">Finansiering & <em>stønader</em></h2>
+  <p class="sub a" style="margin-bottom:8px">Pino kvalifiserer for flere norske støtteordninger.</p>
+  <div class="fdi-wrap a">
+    <div class="fdi"><strong>SkatteFUNN</strong><p>Skattefradrag for AI-utvikling og plattformbygging.</p><span class="fdi-t">Inntil 19% av FoU · maks 25 MNOK</span></div>
+    <div class="fdi"><strong>Innovasjon Norge</strong><p>Oppstartstilskudd fase 1–3 for startups med internasjonalt potensial.</p><span class="fdi-t">Tilskudd · ikke tilbakebetaling</span></div>
+    <div class="fdi"><strong>Pilot Helse</strong><p>Innovasjonsløp fra idé til marked i helsesektoren.</p><span class="fdi-t">Forskningsrådet + Innovasjon Norge</span></div>
+    <div class="fdi"><strong>Innovasjonsprosjekt</strong><p>Bedriftsledet FoU innen helsenæring og IKT.</p><span class="fdi-t">Inntil 50% av industriell forskning</span></div>
+  </div>
+  <div class="sf"><span>Pino AS</span><span>09</span></div>
+</section>
+
+<!-- 10. INVESTERING -->
+<section class="S" data-s>
+  <div class="label a">Investering</div>
+  <h2 class="a" style="margin:4px 0">Hva vi <em>trenger</em></h2>
+  <div style="height:8px"></div>
+  <div class="radial rad5 a" data-radial>
+    <svg class="rl" viewBox="0 0 250 220">
+      <line x1="125" y1="110" x2="24" y2="36" data-ln/><line x1="125" y1="110" x2="226" y2="36" data-ln/>
+      <line x1="125" y1="110" x2="24" y2="188" data-ln/><line x1="125" y1="110" x2="226" y2="188" data-ln/>
+      <line x1="125" y1="110" x2="125" y2="210" data-ln/>
+    </svg>
+    <div class="circle" style="border-color:var(--g)">
+      <div class="cbig">~31M</div>
+      <div class="csm">kapitalbehov År 1–2</div>
+    </div>
+    <div class="rn" style="top:2%;left:-3%" data-rn><div class="rn-l"><strong>13 MNOK</strong>Lønn (3+10 ans.)</div></div>
+    <div class="rn" style="top:2%;right:-3%" data-rn><div class="rn-l"><strong>10 MNOK</strong>Hardware</div></div>
+    <div class="rn" style="bottom:6%;left:-3%" data-rn><div class="rn-l"><strong>3 MNOK</strong>Infrastruktur</div></div>
+    <div class="rn" style="bottom:6%;right:-3%" data-rn><div class="rn-l"><strong>5 MNOK</strong>Markedsføring</div></div>
+    <div class="rn" style="bottom:-4%;left:50%;transform:translateX(-50%)" data-rn><div class="rn-l"><strong>30–50%</strong>Offentlig støtte</div></div>
+  </div>
+  <p class="note a" style="margin-top:18px">Netto kapitalbehov etter støtte: ~15,5–21,7 MNOK for de to første årene.</p>
+  <div class="sf"><span>Pino AS</span><span>10</span></div>
+</section>
+
+<!-- 11. AVSLUTNING -->
+<section class="S" data-s>
+  <div class="clm a">Pino<span style="display:inline-block;width:calc(var(--hero-dot)*0.8);height:calc(var(--hero-dot)*0.8);background:var(--g);border-radius:50%;vertical-align:super;margin-left:1px"></span></div>
+  <p class="clb a">Nordisk helseintelligens.<br>Norsk datasikkerhet.<br>Lokal AI.<br><br>Din helse, i dine hender.</p>
+  <div class="clc a">kontakt@pino.no · pino.no<br>Pino AS · Org.nr. XXX XXX XXX</div>
+</section>
+
+<script>
+(function(){
+  const SS=document.querySelectorAll('[data-s]'),nav=document.getElementById('nav');
+  SS.forEach((_,i)=>{const d=document.createElement('button');d.classList.add('nd');if(!i)d.classList.add('on');d.onclick=()=>SS[i].scrollIntoView({behavior:'smooth'});nav.appendChild(d)});
+  const dots=nav.querySelectorAll('.nd');
+  // Scale factor for bar heights based on viewport
+  function bs(){return window.innerWidth>=1200?1.85:window.innerWidth>=768?1.4:1}
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{
+    const idx=[...SS].indexOf(e.target);
+    if(e.isIntersecting){
+      dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+      e.target.querySelectorAll('.a').forEach(el=>el.classList.add('v'));
+      e.target.querySelectorAll('[data-rn]').forEach((n,i)=>setTimeout(()=>n.classList.add('v'),200+i*100));
+      e.target.querySelectorAll('[data-ln]').forEach((l,i)=>setTimeout(()=>l.classList.add('drawn'),250+i*80));
+      e.target.querySelectorAll('[data-cn]').forEach((n,i)=>setTimeout(()=>n.classList.add('v'),100+i*120));
+      // Bar chart — scale heights
+      const s=bs();
+      e.target.querySelectorAll('[data-vbars]').forEach(c=>{
+        c.querySelectorAll('.vcol-bars').forEach(cb=>{const h=parseFloat(cb.dataset.bh)||0;cb.style.height=(h*s)+'px'});
+        c.querySelectorAll('.vbar').forEach((b,i)=>setTimeout(()=>{const bh=parseFloat(b.dataset.vh)||0;b.style.height=(bh*s)+'px'},120+i*70));
+      });
+      e.target.querySelectorAll('[data-cgbars]').forEach(g=>g.querySelectorAll('.cg-fill').forEach((b,i)=>setTimeout(()=>{b.style.height=b.dataset.gh},150+i*50)));
+      e.target.querySelectorAll('[data-flow]').forEach(f=>f.querySelectorAll('.fi2,.farr').forEach((el,i)=>setTimeout(()=>el.classList.add('v'),100+i*80)));
+      e.target.querySelectorAll('.pills').forEach(w=>w.querySelectorAll('.pill').forEach((p,i)=>{p.style.transition=`opacity .3s ease ${i*.04}s,transform .3s ease ${i*.04}s`;p.style.opacity='1';p.style.transform='translateY(0)'}));
+      e.target.querySelectorAll('.chaos svg line').forEach((l,i)=>setTimeout(()=>l.classList.add('drawn'),200+i*120));
+    }else{
+      e.target.querySelectorAll('.a').forEach(el=>el.classList.remove('v'));
+      e.target.querySelectorAll('[data-rn]').forEach(n=>n.classList.remove('v'));
+      e.target.querySelectorAll('[data-ln]').forEach(l=>l.classList.remove('drawn'));
+      e.target.querySelectorAll('[data-cn]').forEach(n=>n.classList.remove('v'));
+      e.target.querySelectorAll('.vbar').forEach(b=>b.style.height='0');
+      e.target.querySelectorAll('.vcol-bars').forEach(cb=>cb.style.height='0');
+      e.target.querySelectorAll('.cg-fill').forEach(b=>b.style.height='0');
+      e.target.querySelectorAll('.fi2,.farr').forEach(el=>el.classList.remove('v'));
+      e.target.querySelectorAll('.pill').forEach(p=>{p.style.opacity='0';p.style.transform='translateY(6px)'});
+      e.target.querySelectorAll('.chaos svg line').forEach(l=>l.classList.remove('drawn'));
+    }
+  })},{threshold:.35});
+  SS.forEach(s=>io.observe(s));
+})();
+</script>
+</body>
+</html>
